@@ -1,5 +1,5 @@
 "use client";
-import { useState , useEffect, } from "react";
+import { useState  } from "react";
 import Image from "next/image";
 import imgMobile from "@/public/images/pattern-divider-mobile.svg"
 import imgDesk from "@/public/images/pattern-divider-desktop.svg"
@@ -10,10 +10,8 @@ export default function Home() {
   // code to handle API and do a request
   const [id,setID] = useState("ZERO");
   const [advice,setAdvice] = useState("Don't be anyone but yourself.");
-  const [loading,setLoading] = useState(false);
 
   async function handleOnClick(){
-    setLoading(true);
     try{
       const response = await fetch("https://api.adviceslip.com/advice");
       const reslut = await response.json()
@@ -23,7 +21,6 @@ export default function Home() {
     } catch(error){
       console.error("error" , error)
     } finally{
-      setLoading(false);
     }
 
   }
